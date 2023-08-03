@@ -8,7 +8,7 @@ const endpoint = {
     DELETE: "/"
 }
 
-const api = process.env.REACT_APP_API
+const api = "/api"
 const toastConfig = {
     duration: 4000,
     isClosable: true,
