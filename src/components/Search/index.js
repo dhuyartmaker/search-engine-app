@@ -49,15 +49,20 @@ function Search (props) {
         .then(data => {
             if (data.metadata && data.metadata.length) {
                 setListWord(data.metadata)
-                setLoading(false)
             } else if (data.status === "error") {
-                setLoading(false)
                 toast({
                     title: data.message || "Something went wrong!",
                     status: 'error',
                     ...toastConfig
                 })
+            } else {
+                toast({
+                    title: data.metadata.length === 0 ? "Oop! Maybe corpus is null!" : "Error!",
+                    status: 'warning',
+                    ...toastConfig
+                })
             }
+            setLoading(false)
         }).catch(error => {
             setLoading(false)
         })
